@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="text_black">#de000000</color>
+    <color name="text_black_light">#61000000</color>
+    <color name="gray">#aabbbb</color>
+    <color name="icon_tint">#aabbbb</color>
+    <color name="leaf">#66a636</color>
+    <color name="dark_leaf">#33531b</color>
+
+
 </resources>

@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">PracticumDev</string>
+
+    <string name="load">Загрузка…</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="edit">edit</string>
+    <string name="news">News</string>
+    <string name="search">Search</string>
+    <string name="help">Help</string>
+    <string name="history">History</string>
+    <string name="profile">Profile</string>
+    <string name="toolbar_profile">Профиль</string>
+    <string name="logout">Выйти из аккаунта</string>
+    <string name="name1">Виктор Кузнецов</string>
+    <string name="name2">Евгений Александров</string>
+    <string name="name3">Дмитрий Валерьевич</string>
+    <string name="friends">Ваши друзья</string>
+    <string name="push">Получать push-уведомления</string>
+    <string name="info_work">Хирургия, травмотология</string>
+    <string name="info">Сфера деятельности</string>
+    <string name="date_of_birth">01 февраля 1980</string>
+    <string name="date">Дата рождения</string>
+    <string name="name_info">Константинов Денис</string>
 </resources>
