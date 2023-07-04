@@ -10,6 +10,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         navigationSetup()
         supportFragmentManager.beginTransaction().add(R.id.fragmentContainerView, ProfileFragment())
             .commit()
@@ -17,30 +18,5 @@ class MainActivity : AppCompatActivity() {
 
     private fun navigationSetup() {
         binding.bottomNavigationView.selectedItemId = R.id.nav_profile
-        binding.bottomNavigationView.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.nav_news -> {
-                    true
-                }
-
-                R.id.nav_search -> {
-                    true
-                }
-
-                R.id.nav_help -> {
-                    true
-                }
-
-                R.id.nav_history -> {
-                    true
-                }
-
-                R.id.nav_profile -> {
-                    true
-                }
-
-                else -> false
-            }
-        }
     }
 }
