@@ -26,4 +26,11 @@
         <item name="android:paddingEnd">16dp</item>
     </style>
 
+    <style name="SearchTabLayout">
+        <item name="tabTextColor">@color/white_tab</item>
+        <item name="tabIndicatorColor">@color/orange</item>
+        <item name="tabBackground">@color/leaf</item>
+        <item name="tabSelectedTextColor">@color/white</item>
+    </style>
+
 </resources>

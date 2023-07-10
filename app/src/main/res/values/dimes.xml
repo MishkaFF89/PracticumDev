@@ -9,4 +9,6 @@
     <dimen name="annotation_text">12sp</dimen>
     <dimen name="button_text">14sp</dimen>
     <dimen name="toolbar_title_text">26sp</dimen>
+    <dimen name="profile_option_padding">30dp</dimen>
+
 </resources>
