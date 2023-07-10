@@ -21,4 +21,21 @@
     <string name="date_of_birth">01 февраля 1980</string>
     <string name="date">Дата рождения</string>
     <string name="name_info">Константинов Денис</string>
+    <string name="select_photo">Выбрать фото</string>
+    <string name="take_photo">Сделать снимок</string>
+    <string name="delete">Удалить</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="help_title">Помочь</string>
+    <string name="pick_category">Выберите категорию помощи</string>
+    <string name="kids">Дети</string>
+    <string name="adult">Взрослые</string>
+    <string name="elderly">Пожилые</string>
+    <string name="animals">Животные</string>
+    <string name="events">Мероприятия</string>
+    <string name="search_hint">Введите название организации</string>
+    <string name="by_nko">По НКО</string>
+    <string name="by_events">По мероприятиям</string>
+    <string name="search_result">Ключевые слова: мастер-класс, помощь \nРезультаты поиска: 109 мероприятий</string>
+    <string name="image_view">image_view</string>
 </resources>
