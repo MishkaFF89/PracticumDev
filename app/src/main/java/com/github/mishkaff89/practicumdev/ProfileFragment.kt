@@ -47,9 +47,14 @@ class ProfileFragment : Fragment() {
         dialog.showDialog()
         dialog.onItemClick { clickId ->
             when (clickId) {
+                R.id.click_upload -> {
+                    startGalleryForIntent()
+                }
+
                 R.id.click_take_photo -> {
                     dispatchTakePictureIntent()
                 }
+
                 R.id.click_delete -> {
                     binding.ivPhotoProfile.visibility = View.INVISIBLE
                 }
@@ -74,4 +79,27 @@ class ProfileFragment : Fragment() {
             Log.e("Error", e.message.toString())
         }
     }
+
+    private fun startGalleryForIntent() {
+        val galleryIntent = Intent(
+            Intent.ACTION_PICK,
+            MediaStore.Images.Media.INTERNAL_CONTENT_URI
+        )
+        try {
+            startGalleryForResult.launch(galleryIntent)
+        } catch (e: ActivityNotFoundException) {
+            Log.e("", e.message.orEmpty())
+        }
+
+    }
+
+    private val startGalleryForResult =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult())
+        { result: ActivityResult ->
+            if (result.resultCode == RESULT_OK) {
+                val image = result.data?.data
+                binding.ivPhotoProfile.setImageURI(image)
+            }
+        }
+
 }

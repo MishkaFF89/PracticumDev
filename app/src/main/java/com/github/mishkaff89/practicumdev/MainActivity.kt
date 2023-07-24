@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.github.mishkaff89.practicumdev.databinding.ActivityMainBinding
 import com.github.mishkaff89.practicumdev.help.HelpFragment
+import com.github.mishkaff89.practicumdev.news.NewsFragment
 import com.github.mishkaff89.practicumdev.search.SearchFragment
 
 class MainActivity : AppCompatActivity() {
@@ -39,6 +40,13 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_search -> {
                     supportFragmentManager.beginTransaction().run {
                         replace(R.id.fragmentContainerView, SearchFragment())
+                        commit()
+                    }
+                    true
+                }
+                R.id.nav_news -> {
+                    supportFragmentManager.beginTransaction().run {
+                        replace(R.id.fragmentContainerView, NewsFragment())
                         commit()
                     }
                     true

@@ -12,11 +12,11 @@ class HelpFragment : Fragment() {
     private lateinit var binding: FragmentHelpBinding
     private var adapter:HelpAdapter? = null
     private val listCategory by lazy { listOf(
-        HelpCategoryItem( resources.getString(R.string.kids), R.drawable.kids),
-        HelpCategoryItem( resources.getString(R.string.adult), R.drawable.adults),
-        HelpCategoryItem( resources.getString(R.string.elderly), R.drawable.elderly),
-        HelpCategoryItem( resources.getString(R.string.animals), R.drawable.animals),
-        HelpCategoryItem( resources.getString(R.string.events), R.drawable.events)
+        HelpCategoryItem( resources.getString(R.string.kids), R.raw.kids),
+        HelpCategoryItem( resources.getString(R.string.adult), R.raw.adults),
+        HelpCategoryItem( resources.getString(R.string.elderly), R.raw.elderly),
+        HelpCategoryItem( resources.getString(R.string.animals), R.raw.animals),
+        HelpCategoryItem( resources.getString(R.string.events), R.raw.events)
     ) }
 
 
