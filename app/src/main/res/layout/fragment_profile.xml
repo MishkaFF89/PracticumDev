@@ -29,7 +29,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/profile_image_height"
                     android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/image_man"
+                    app:srcCompat="@raw/image_man"
                     tools:ignore="ContentDescription" />
             </LinearLayout>
 
@@ -72,7 +72,7 @@
                     android:layout_marginTop="20dp"
                     android:fontFamily="@font/roboto"
                     android:text="@string/name_info"
-                    android:textColor="@color/text_black"
+                    android:textColor="@color/black_87"
                     android:textSize="@dimen/title_text" />
 
                 <TextView
@@ -81,7 +81,7 @@
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/roboto"
                     android:text="@string/date"
-                    android:textColor="@color/text_black_light"
+                    android:textColor="@color/black_38"
                     android:textSize="@dimen/annotation_text" />
 
                 <TextView
@@ -89,7 +89,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
                     android:text="@string/date_of_birth"
-                    android:textColor="@color/text_black"
+                    android:textColor="@color/black_87"
                     android:textSize="@dimen/subtitle_text" />
 
                 <TextView
@@ -98,7 +98,7 @@
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/roboto"
                     android:text="@string/info"
-                    android:textColor="@color/text_black_light"
+                    android:textColor="@color/black_38"
                     android:textSize="@dimen/annotation_text" />
 
                 <TextView
@@ -106,7 +106,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
                     android:text="@string/info_work"
-                    android:textColor="@color/text_black"
+                    android:textColor="@color/black_87"
                     android:textSize="@dimen/subtitle_text" />
             </LinearLayout>
 
@@ -123,7 +123,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/roboto"
                     android:text="@string/push"
-                    android:textColor="@color/text_black"
+                    android:textColor="@color/black_87"
                     android:textSize="@dimen/subtitle_text" />
 
                 <Switch
@@ -139,7 +139,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="18dp"
-                android:background="@color/gray" />
+                android:background="@color/grey" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -154,7 +154,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
                     android:text="@string/friends"
-                    android:textColor="@color/text_black_light"
+                    android:textColor="@color/black_38"
                     android:textSize="@dimen/annotation_text" />
 
                 <LinearLayout
@@ -166,7 +166,7 @@
                     <com.google.android.material.imageview.ShapeableImageView
                         android:layout_width="@dimen/friend_icon_width"
                         android:layout_height="@dimen/friend_icon_height"
-                        app:srcCompat="@drawable/avatar_3" />
+                        app:srcCompat="@raw/avatar_3" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -175,7 +175,7 @@
                         android:layout_marginStart="@dimen/default_margin"
                         android:fontFamily="@font/roboto"
                         android:text="@string/name3"
-                        android:textColor="@color/text_black"
+                        android:textColor="@color/black_87"
                         android:textSize="@dimen/subtitle_text" />
                 </LinearLayout>
 
@@ -188,7 +188,7 @@
                     <com.google.android.material.imageview.ShapeableImageView
                         android:layout_width="@dimen/friend_icon_width"
                         android:layout_height="@dimen/friend_icon_height"
-                        app:srcCompat="@drawable/avatar_2" />
+                        app:srcCompat="@raw/avatar_2" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -197,7 +197,7 @@
                         android:layout_marginStart="@dimen/default_margin"
                         android:fontFamily="@font/roboto"
                         android:text="@string/name2"
-                        android:textColor="@color/text_black"
+                        android:textColor="@color/black_87"
                         android:textSize="@dimen/subtitle_text" />
                 </LinearLayout>
 
@@ -210,7 +210,7 @@
                     <com.google.android.material.imageview.ShapeableImageView
                         android:layout_width="@dimen/friend_icon_width"
                         android:layout_height="@dimen/friend_icon_height"
-                        app:srcCompat="@drawable/avatar_1" />
+                        app:srcCompat="@raw/avatar_1" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -219,7 +219,7 @@
                         android:layout_marginStart="@dimen/default_margin"
                         android:fontFamily="@font/roboto"
                         android:text="@string/name1"
-                        android:textColor="@color/text_black"
+                        android:textColor="@color/black_87"
                         android:textSize="@dimen/subtitle_text" />
                 </LinearLayout>
             </LinearLayout>
@@ -228,7 +228,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="@dimen/default_margin"
-                android:background="@color/gray"
+                android:background="@color/grey"
                 tools:ignore="ContentDescription" />
 
             <Button

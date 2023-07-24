@@ -4,10 +4,14 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-
-    <color name="text_black">#de000000</color>
-    <color name="text_black_light">#61000000</color>
-    <color name="gray">#aabbbb</color>
+    <color name="turtle_green">#7db354</color>
+    <color name="black_38">#61000000</color>
+    <color name="black_40">#66000000</color>
+    <color name="black_54">#8a000000</color>
+    <color name="black_70">#b3000000</color>
+    <color name="black_60">#99000000</color>
+    <color name="black_87">#de000000</color>
+    <color name="grey">#94998a</color>
     <color name="icon_tint">#aabbbb</color>
     <color name="leaf">#66a636</color>
     <color name="dark_leaf">#33531b</color>
@@ -15,7 +19,10 @@
     <color name="orange">#f2b630</color>
     <color name="white_tab">#b3ffffff</color>
     <color name="light_gray">#e8eded</color>
-    <color name="light_gray_text">#8a000000</color>
+    <color name="light_gray_two">#e8eded</color>
+    <color name="blue_gray">#627f8f</color>
+    <color name="off_white">#fffffd</color>
+    <color name="brown_grey">#aaaaaa</color>
 
 
 </resources>
