@@ -1,6 +1,7 @@
 package com.github.mishkaff89.practicumdev.news.data
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class NewsItem (
     @SerializedName("id")
@@ -33,4 +34,4 @@ data class NewsItem (
     val email: String,
     @SerializedName("category_id")
     val categoryId: Int
-)
+): Serializable

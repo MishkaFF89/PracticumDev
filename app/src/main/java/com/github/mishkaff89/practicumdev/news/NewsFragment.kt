@@ -1,6 +1,8 @@
 package com.github.mishkaff89.practicumdev.news
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,9 +12,11 @@ import com.github.mishkaff89.practicumdev.R
 import com.github.mishkaff89.practicumdev.databinding.FragmentNewsBinding
 import com.github.mishkaff89.practicumdev.news.adapters.NewsAdapter
 import com.github.mishkaff89.practicumdev.news.data.FilterCategory
+import com.github.mishkaff89.practicumdev.news.data.NewsCharity
 import com.github.mishkaff89.practicumdev.news.helpers.Constants
 import com.github.mishkaff89.practicumdev.news.helpers.Filtering
 import com.github.mishkaff89.practicumdev.news.helpers.Utils
+import java.util.concurrent.Executors
 
 class NewsFragment : Fragment() {
 
@@ -22,9 +26,8 @@ class NewsFragment : Fragment() {
 
     private var filterFragment: NewsFilterFragment? = null
 
-    private val news by lazy {
-        Utils.getNews(requireContext().applicationContext)
-    }
+
+    private var news:NewsCharity? = null
 
     private var changedFilters: List<FilterCategory>? = null
 
@@ -39,17 +42,49 @@ class NewsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         init()
-        initAdapter()
     }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putSerializable(NEWS, news)
+    }
+
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        super.onViewStateRestored(savedInstanceState)
+        savedInstanceState?.getSerializable(NEWS)?.let {
+            news = it as NewsCharity
+            initAdapter()
+        } ?: kotlin.run {
+            if(adapter == null){
+                getNews()
+            } else {
+                binding.rvNews.adapter = this.adapter
+            }
+        }
+    }
+
+
 
     private fun initAdapter(){
         if (adapter == null) {
-            adapter = NewsAdapter(news.news) { newsId ->
+            adapter = NewsAdapter(news?.news ?: listOf()){newsId ->
                 pushNewsDetail(newsId)
             }
             binding.rvNews.adapter = adapter
         } else {
             binding.rvNews.adapter = adapter
+        }
+    }
+
+    private fun getNews(){
+        binding.progressBar.visibility = View.VISIBLE
+        Executors.newSingleThreadExecutor().execute{
+            Thread.sleep(5_000)
+            news = Utils.getNews(requireContext())
+            Handler(Looper.getMainLooper()).post{
+                initAdapter()
+                binding.progressBar.visibility = View.GONE
+            }
         }
     }
 
@@ -82,11 +117,11 @@ class NewsFragment : Fragment() {
     }
 
     private fun updateNews() {
-        val filteredNews = news.news.filter { news ->
+        val filteredNews = news?.news?.filter { news ->
             val filter = changedFilters?.find { filter -> filter.id == news.categoryId }
             filter != null
         }
-        adapter?.updateNews(filteredNews)
+        adapter?.updateNews(filteredNews ?: listOf())
     }
 
     private fun pushNewsDetail(newsId: Int) {
@@ -101,6 +136,8 @@ class NewsFragment : Fragment() {
         }
     }
 
-
+    companion object{
+        const val NEWS = "NEWS"
+    }
 
 }
