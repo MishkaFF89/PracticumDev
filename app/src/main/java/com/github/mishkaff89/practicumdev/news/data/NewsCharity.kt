@@ -1,3 +1,5 @@
 package com.github.mishkaff89.practicumdev.news.data
 
-class NewsCharity (val news: List<NewsItem>)
+import java.io.Serializable
+
+class NewsCharity (val news: List<NewsItem>): Serializable

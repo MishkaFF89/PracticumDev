@@ -9,8 +9,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="wrap_content">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
@@ -18,10 +17,9 @@
             android:layout_height="?attr/actionBarSize"
             android:minHeight="?attr/actionBarSize"
             android:theme="@style/ToolbarTheme"
-            app:title="@string/news_title"
-            app:titleTextAppearance="@style/Toolbar.TitleText"
             app:menu="@menu/news_menu_toolbar"
-            />
+            app:title="@string/news_title"
+            app:titleTextAppearance="@style/Toolbar.TitleText" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -29,11 +27,23 @@
         android:id="@+id/rv_news"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="8dp"
         android:layout_marginTop="?attr/actionBarSize"
         android:background="@color/light_gray"
+        android:padding="8dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_news_card"
-        />
+        tools:listitem="@layout/item_news_card" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminateTint="@color/leaf"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
 
 </FrameLayout>

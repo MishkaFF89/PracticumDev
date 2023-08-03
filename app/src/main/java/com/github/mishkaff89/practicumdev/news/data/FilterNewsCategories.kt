@@ -1,3 +1,5 @@
 package com.github.mishkaff89.practicumdev.news.data
 
-class FilterNewsCategories (val categories: List<FilterCategory>)
+import java.io.Serializable
+
+class FilterNewsCategories (val categories: List<FilterCategory>): Serializable
