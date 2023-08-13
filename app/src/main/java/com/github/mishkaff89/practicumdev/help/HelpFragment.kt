@@ -5,26 +5,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.github.mishkaff89.practicumdev.R
 import com.github.mishkaff89.practicumdev.databinding.FragmentHelpBinding
 
 class HelpFragment : Fragment() {
     private lateinit var binding: FragmentHelpBinding
-    private var adapter:HelpAdapter? = null
-    private val listCategory by lazy { listOf(
-        HelpCategoryItem( resources.getString(R.string.kids), R.drawable.kids),
-        HelpCategoryItem( resources.getString(R.string.adult), R.drawable.adults),
-        HelpCategoryItem( resources.getString(R.string.elderly), R.drawable.elderly),
-        HelpCategoryItem( resources.getString(R.string.animals), R.drawable.animals),
-        HelpCategoryItem( resources.getString(R.string.events), R.drawable.events)
-    ) }
-
+    private var adapter: HelpAdapter? = null
+    private val listCategory = HelpCategoryRepository.list
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        binding = FragmentHelpBinding.inflate(inflater,container,false)
+        binding = FragmentHelpBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -33,10 +25,9 @@ class HelpFragment : Fragment() {
         initAdapter()
     }
 
-    private fun initAdapter(){
+    private fun initAdapter() {
         adapter = HelpAdapter(listCategory)
         binding.rcCategory.adapter = adapter
     }
-
-
 }
+

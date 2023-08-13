@@ -4,7 +4,7 @@ import android.app.AlertDialog
 import android.content.Context
 import android.widget.LinearLayout
 
-class ProfileAlertDialog(context: Context): AlertDialog(context) {
+class ProfileAlertDialog(context: Context): AlertDialog(context), AlertDialogInterface {
 
     private var dialogView = layoutInflater.inflate(R.layout.profile_alert_dialog, null)
 
@@ -39,7 +39,7 @@ class ProfileAlertDialog(context: Context): AlertDialog(context) {
         setListeners()
     }
 
-    private fun setListeners() {
+    override fun setListeners() {
         optionUpload.setOnClickListener { onClickItem?.invoke(R.id.click_upload) }
         optionTakePhoto.setOnClickListener { onClickItem?.invoke(R.id.click_take_photo) }
         optionDelete.setOnClickListener { onClickItem?.invoke(R.id.click_delete) }
