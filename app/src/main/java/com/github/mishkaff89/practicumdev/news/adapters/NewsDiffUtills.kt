@@ -16,6 +16,6 @@ class NewsDiffUtils(private val oldList: List<NewsItem>,
     }
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return oldList[oldItemPosition].categoryId == newList[newItemPosition].categoryId
+        return oldList[oldItemPosition] == newList[newItemPosition]
     }
 }

@@ -12,13 +12,7 @@ import com.github.mishkaff89.practicumdev.databinding.FragmentByNkoBinding
 class ByNkoFragment : Fragment() {
     private lateinit var binding: FragmentByNkoBinding
     private var adapter: SearchAdapter? = null
-    private val searchResults = listOf(
-        SearchItem( "Благотворительный фонд Алины Кабаевой"),
-        SearchItem("«Во имя жизни»" ),
-        SearchItem("Благотворительный Фонд В. Потанина" ),
-        SearchItem( "«Детские домики»"),
-        SearchItem( "«Мозаика счастья»"),
-    )
+    private val searchResults = SearchItemRepository.list
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
