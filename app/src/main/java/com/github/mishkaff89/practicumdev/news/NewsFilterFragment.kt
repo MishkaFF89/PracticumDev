@@ -25,8 +25,6 @@ class NewsFilterFragment : Fragment(), Filtering {
         Utils.getCategories(requireContext().applicationContext)
     }
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,

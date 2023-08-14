@@ -16,7 +16,6 @@
         <com.google.android.material.appbar.MaterialToolbar
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:minHeight="?attr/actionBarSize"
             android:theme="@style/ToolbarTheme"
             app:title="@string/help_title"
             app:titleTextAppearance="@style/Toolbar.TitleText" />
@@ -24,7 +23,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/help_category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/pick_category"
@@ -47,7 +46,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/help_category"
         app:spanCount="2"
         tools:listitem="@layout/item_category" />
 
