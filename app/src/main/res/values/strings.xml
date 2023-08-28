@@ -56,4 +56,17 @@
     <string name="help_prof">Проф. помощь</string>
     <string name="help_money">Помочь деньгами</string>
     <string name="share">Share</string>
+    <string name="auth">Авторизация</string>
+    <string name="auth_desc">Для участия в мероприятиях войдите \nв приложение через социальые сети</string>
+    <string name="auth_with_app">Или авторизуйтесь через приложение</string>
+    <string name="email">E-mail</string>
+    <string name="auth_email">Введите e-mail</string>
+    <string name="password">Пароль</string>
+    <string name="enter_password">Введите пароль</string>
+    <string name="sign_in">Войти</string>
+    <string name="forgot_pass"><u>Забыли пароль?</u></string>
+    <string name="registartion"><u>Регистрация</u></string>
+    <string name="event_msg">Напишите в строке поиска название \nмероприятия или ключевые слова.</string>
+    <string name="example">Например,</string>
+    <string name="test_example"><u>мастер-класс</u>, <u>помощь</u></string>
 </resources>

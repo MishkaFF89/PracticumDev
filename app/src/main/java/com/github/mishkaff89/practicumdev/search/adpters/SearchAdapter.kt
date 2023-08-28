@@ -1,9 +1,10 @@
-package com.github.mishkaff89.practicumdev.search
+package com.github.mishkaff89.practicumdev.search.adpters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.github.mishkaff89.practicumdev.databinding.ItemSearchBinding
+import com.github.mishkaff89.practicumdev.search.SearchItem
 
 class SearchAdapter(result: List<SearchItem>) :
     RecyclerView.Adapter<SearchAdapter.SearchHolder>() {

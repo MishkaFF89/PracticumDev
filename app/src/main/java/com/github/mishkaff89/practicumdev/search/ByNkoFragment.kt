@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.github.mishkaff89.practicumdev.databinding.FragmentByNkoBinding
+import com.github.mishkaff89.practicumdev.search.adpters.SearchAdapter
 
 
 class ByNkoFragment : Fragment() {
