@@ -1,10 +1,14 @@
 package com.github.mishkaff89.practicumdev.news.helpers
 
 import android.content.Context
+import android.os.Build
 import android.util.Log
+import androidx.annotation.RequiresApi
 import com.github.mishkaff89.practicumdev.news.data.FilterNewsCategories
 import com.github.mishkaff89.practicumdev.news.data.NewsCharity
 import com.google.gson.Gson
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.schedulers.Schedulers
 import java.time.Instant
 import java.time.Month
 import java.time.ZoneId
@@ -15,34 +19,44 @@ object Utils {
     private const val CATEGORIES_JSON = "categories.json"
     private const val CHARITY_EVENTS_JSON = "events.json"
 
-    fun getCategories(appContext: Context): FilterNewsCategories {
-        try {
-            val data = appContext.assets
-                .open(CATEGORIES_JSON)
-                .bufferedReader()
-
-            val gson = Gson()
-            return gson.fromJson(data, FilterNewsCategories::class.java)
-        } catch (e: Exception) {
-            Log.e("", e.message.orEmpty())
-            throw e
+    fun getCategoriesRxJava(appContext: Context): Observable<FilterNewsCategories> {
+        return Observable.create<FilterNewsCategories> {subscriber ->
+            try {
+                val data = appContext.assets
+                    .open(CATEGORIES_JSON)
+                    .bufferedReader()
+                val gson = Gson()
+                val result = gson.fromJson(data, FilterNewsCategories::class.java)
+                subscriber.onNext(result)
+                Log.e("Current thread is ", Thread.currentThread().name)
+                subscriber.onComplete()
+            } catch (e: Exception){
+                Log.e("", e.message.orEmpty())
+                throw e
+            }
         }
+            .subscribeOn(Schedulers.newThread())
     }
 
-    fun getNews(appContext: Context): NewsCharity {
-        try {
-            val data = appContext.assets
-                .open(CHARITY_EVENTS_JSON)
-                .bufferedReader()
+    fun getEventsRxJava(appContext: Context): Observable<NewsCharity> {
+        return Observable.create<NewsCharity> {
+            try {
+                val data = appContext.assets.open(CHARITY_EVENTS_JSON).bufferedReader()
 
-            val gson = Gson()
-            return gson.fromJson(data, NewsCharity::class.java)
-        } catch (e: Exception) {
-            Log.e("", e.message.orEmpty())
-            throw e
+                val gson = Gson()
+                val result = gson.fromJson(data, NewsCharity::class.java)
+                Log.e("Current thread is ", Thread.currentThread().name)
+                it.onNext(result)
+                it.onComplete()
+            } catch (e: Exception) {
+                Log.e("", e.message.orEmpty())
+                it.onError(e)
+            }
         }
+            .subscribeOn(Schedulers.newThread())
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     fun dateFormat(date: String): String {
         val now = ZonedDateTime.ofInstant(Instant.now(), ZoneId.systemDefault())
         val newsDate = ZonedDateTime.parse(date)

@@ -1,14 +1,13 @@
 package com.github.mishkaff89.practicumdev.news
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import com.github.mishkaff89.practicumdev.R
+import com.github.mishkaff89.practicumdev.Readable
 import com.github.mishkaff89.practicumdev.databinding.FragmentNewsBinding
 import com.github.mishkaff89.practicumdev.news.adapters.NewsAdapter
 import com.github.mishkaff89.practicumdev.news.data.FilterCategory
@@ -16,6 +15,8 @@ import com.github.mishkaff89.practicumdev.news.data.NewsCharity
 import com.github.mishkaff89.practicumdev.news.helpers.Constants
 import com.github.mishkaff89.practicumdev.news.helpers.Filtering
 import com.github.mishkaff89.practicumdev.news.helpers.Utils
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.schedulers.Schedulers
 import java.util.concurrent.Executors
 
 class NewsFragment : Fragment() {
@@ -27,9 +28,11 @@ class NewsFragment : Fragment() {
     private var filterFragment: NewsFilterFragment? = null
 
 
-    private var news:NewsCharity? = null
+    private var news: NewsCharity? = null
 
     private var changedFilters: List<FilterCategory>? = null
+
+    private val subjects by lazy { (requireActivity() as Readable).subjects }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,6 +44,34 @@ class NewsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        savedInstanceState?.getSerializable(NEWS)?.let {
+            (it as NewsCharity).let {
+                val unreadNews = it.news.filter { news ->
+                    val subject =
+                        (requireActivity() as Readable).subjects.find { subject ->
+                            subject.event.id == news.id }!!
+                    !subject.isRead
+                }
+                news = NewsCharity(unreadNews)
+            }
+            initAdapter()
+        } ?: kotlin.run {
+            if (adapter == null) {
+                getNews()
+            } else {
+                binding.rvNews.adapter = adapter
+                news?.let {
+                    val unreadEvents = it.news.filter { news ->
+                        val subject =
+                            (requireActivity() as Readable).subjects.find { subject -> subject.event.id == news.id }!!
+                        !subject.isRead
+                    }
+                    news = NewsCharity(unreadEvents)
+                    adapter?.updateNews(unreadEvents)
+                    (requireActivity() as Readable).setNotificationBadge(unreadEvents.size)
+                }
+            }
+        }
         init()
     }
 
@@ -53,21 +84,13 @@ class NewsFragment : Fragment() {
         super.onViewStateRestored(savedInstanceState)
         savedInstanceState?.getSerializable(NEWS)?.let {
             news = it as NewsCharity
-            initAdapter()
-        } ?: kotlin.run {
-            if(adapter == null){
-                getNews()
-            } else {
-                binding.rvNews.adapter = this.adapter
-            }
+
         }
     }
 
-
-
-    private fun initAdapter(){
+    private fun initAdapter() {
         if (adapter == null) {
-            adapter = NewsAdapter(news?.news ?: listOf()){newsId ->
+            adapter = NewsAdapter(news?.news ?: listOf()) { newsId ->
                 pushNewsDetail(newsId)
             }
             binding.rvNews.adapter = adapter
@@ -76,15 +99,25 @@ class NewsFragment : Fragment() {
         }
     }
 
-    private fun getNews(){
+    private fun getNews() {
         binding.progressBar.visibility = View.VISIBLE
-        Executors.newSingleThreadExecutor().execute{
-            Thread.sleep(5_000)
-            news = Utils.getNews(requireContext())
-            Handler(Looper.getMainLooper()).post{
-                initAdapter()
-                binding.progressBar.visibility = View.GONE
-            }
+        Executors.newSingleThreadExecutor().execute {
+            Thread.sleep(1_000)
+            Utils.getEventsRxJava(requireContext())
+                .map { news ->
+                    news.news.filter { news ->
+                        val subject = subjects.find { subject -> subject.event.id == news.id }!!
+                        !subject.isRead
+                    }
+                }
+                .map { news -> NewsCharity(news) }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe { news ->
+                    this.news = news
+                    initAdapter()
+                    binding.progressBar.visibility = View.GONE
+                }
         }
     }
 
@@ -136,7 +169,7 @@ class NewsFragment : Fragment() {
         }
     }
 
-    companion object{
+    companion object {
         const val NEWS = "NEWS"
     }
 

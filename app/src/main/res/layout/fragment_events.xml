@@ -3,4 +3,73 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".search.EventsFragment"/>
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".search.EventsFragment"
+    android:background="@color/light_gray_two">
+
+    <LinearLayout
+        android:id="@+id/place_holder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:visibility="gone"
+        >
+        <ImageView
+            android:layout_marginTop="50dp"
+            android:layout_gravity="center"
+            android:id="@+id/iv_zoom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_zoom"
+            />
+
+        <TextView
+            android:layout_marginTop="38dp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:text="@string/event_msg"
+            android:fontFamily="@font/roboto"
+            android:textColor="@color/black_70"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/example"
+                android:textColor="@color/black_70"
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto"
+                />
+
+            <TextView
+                android:layout_marginStart="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/test_example"
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto"
+                android:textColor="@color/leaf"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_events"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:paddingHorizontal="20dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_search"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
